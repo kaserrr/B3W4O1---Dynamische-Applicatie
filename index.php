@@ -1,7 +1,9 @@
 <?php 
 include_once 'config.php';
 $characters = $db->query("SELECT * FROM characters");
-$count = $db->query("SELECT COUNT(*) FROM characters");
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +15,14 @@ $count = $db->query("SELECT COUNT(*) FROM characters");
     <link href="./resources/css/style.css" rel="stylesheet"/>
 </head>
 <body>
-<header><h1>Alle <?php ?> characters uit de database</h1>
+<header><h1>Alle
+    <?php
+        $query = "SELECT COUNT(*) FROM characters";
+        $number = $db->query($query);
+        $amount = $number->fetchAll();
+        echo $amount[0][0];
+    ?>
+ characters uit de database</h1>
 </header>
     <div id="container">
     <?php foreach ($characters as $row) { ?>
