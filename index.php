@@ -1,9 +1,6 @@
 <?php 
 include_once 'config.php';
-$characters = $db->query("SELECT * FROM characters");
-
-
-
+$characters = $db->query("SELECT * FROM characters ORDER BY name ASC");
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +23,7 @@ $characters = $db->query("SELECT * FROM characters");
 </header>
     <div id="container">
     <?php foreach ($characters as $row) { ?>
-        <a class="item" href="character.html">
+        <a class="item" href="character.php?id=<?php echo $row['id'];?>">
             <div class="left">
                 <img class="avatar" src="resources/images/<?php echo $row['avatar'] ?>">
             </div>
